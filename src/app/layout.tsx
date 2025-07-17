@@ -4,11 +4,21 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { Logo } from '@/components/logo';
 
+/**
+ * Metadata for the application, used for SEO and browser information.
+ */
 export const metadata: Metadata = {
   title: 'Quote Ace',
   description: 'Get a motor insurance quotation in minutes.',
 };
 
+/**
+ * The root layout for the entire application.
+ * This component wraps all pages and provides a consistent structure,
+ * including the header, footer, and font loading.
+ * @param {Readonly<{ children: React.ReactNode }>} props - The props for the component.
+ * @returns {React.ReactElement} The rendered root layout.
+ */
 export default function RootLayout({
   children,
 }: Readonly<{

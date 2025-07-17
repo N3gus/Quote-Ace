@@ -23,12 +23,21 @@ import { Switch } from "@/components/ui/switch";
 import { useToast } from "@/hooks/use-toast";
 import { quoteFormSchema, type QuoteFormData } from "@/lib/schema";
 
+/**
+ * Configuration for the multi-step form.
+ * Each object represents a step with its ID, title, and associated form fields.
+ */
 const steps = [
   { id: 1, title: "Vehicle Details", fields: ["make", "model", "year"] },
   { id: 2, title: "Your Information", fields: ["fullName", "email"] },
   { id: 3, title: "Coverage Options", fields: ["liability", "collision", "comprehensive"] },
 ];
 
+/**
+ * A multi-step form component for collecting insurance quote information.
+ * It handles form state, validation, navigation between steps, and submission.
+ * @returns {React.ReactElement} The rendered insurance form component.
+ */
 export function InsuranceForm() {
   const [currentStep, setCurrentStep] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -52,6 +61,9 @@ export function InsuranceForm() {
 
   type FieldName = keyof QuoteFormData;
 
+  /**
+   * Proceeds to the next step in the form after validating the current step's fields.
+   */
   const nextStep = async () => {
     const fields = steps[currentStep].fields as FieldName[];
     const output = await form.trigger(fields, { shouldFocus: true });
@@ -63,12 +75,20 @@ export function InsuranceForm() {
     }
   };
 
+  /**
+   * Navigates to the previous step in the form.
+   */
   const prevStep = () => {
     if (currentStep > 0) {
       setCurrentStep((step) => step - 1);
     }
   };
 
+  /**
+   * Handles the final form submission.
+   * It calculates a mock premium, shows a success toast, and navigates to the quote page.
+   * @param {QuoteFormData} data - The validated form data.
+   */
   const onSubmit = async (data: QuoteFormData) => {
     // Final validation for coverage
     const output = await form.trigger(["liability", "collision", "comprehensive"]);

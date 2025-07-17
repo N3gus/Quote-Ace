@@ -1,6 +1,11 @@
 import { InsuranceForm } from "@/components/insurance-form";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
+/**
+ * The main landing page of the application.
+ * It displays a card containing the insurance quotation form.
+ * @returns {React.ReactElement} The rendered home page.
+ */
 export default function Home() {
   return (
     <div className="container mx-auto py-8 px-4 flex items-start justify-center">

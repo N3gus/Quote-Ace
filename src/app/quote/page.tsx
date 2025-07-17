@@ -9,13 +9,18 @@ import { Separator } from "@/components/ui/separator";
 import { CheckIcon } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
 
+/**
+ * Displays the generated insurance quote details.
+ * It retrieves quote data from the URL search parameters.
+ * @returns {React.ReactElement} The rendered quote display component.
+ */
 function QuoteDisplay() {
   const searchParams = useSearchParams();
 
   const quote = {
     make: searchParams.get('make') || 'N/A',
     model: searchParams.get('model') || 'N/A',
-    year: searchParams.get('year') || 'N/A',
+    year: search-params.get('year') || 'N/A',
     fullName: searchParams.get('fullName') || 'N/A',
     email: searchParams.get('email') || 'N/A',
     liability: searchParams.get('liability') === 'true',
@@ -24,6 +29,11 @@ function QuoteDisplay() {
     premium: searchParams.get('premium') || '0',
   };
 
+  /**
+   * Formats a numeric amount into a Zambian Kwacha currency string.
+   * @param {string} amount - The amount to format.
+   * @returns {string} The formatted currency string (e.g., "K7,000.00").
+   */
   const formatCurrency = (amount: string) => {
     return new Intl.NumberFormat('en-ZM', {
       style: 'currency',
@@ -85,6 +95,10 @@ function QuoteDisplay() {
   );
 }
 
+/**
+ * A skeleton loader component shown while the quote data is being loaded.
+ * @returns {React.ReactElement} The rendered skeleton loading state.
+ */
 function QuoteLoadingSkeleton() {
     return (
         <div className="container mx-auto py-8 px-4 flex items-start justify-center">
@@ -127,6 +141,11 @@ function QuoteLoadingSkeleton() {
     );
 }
 
+/**
+ * The main page component for displaying the quote.
+ * It uses React Suspense to show a loading skeleton while the quote data is fetched.
+ * @returns {React.ReactElement} The rendered quote page.
+ */
 export default function QuotePage() {
     return (
         <Suspense fallback={<QuoteLoadingSkeleton />}>

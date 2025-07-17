@@ -1,5 +1,11 @@
 import type { SVGProps } from "react";
 
+/**
+ * Renders the application's logo as an SVG component.
+ * The logo is a shield icon, representing security and protection.
+ * @param {SVGProps<SVGSVGElement>} props - Standard SVG properties.
+ * @returns {React.ReactElement} The rendered SVG logo.
+ */
 export function Logo(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
