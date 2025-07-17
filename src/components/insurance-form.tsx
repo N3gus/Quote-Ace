@@ -40,7 +40,7 @@ export function InsuranceForm() {
     defaultValues: {
       make: "",
       model: "",
-      year: "" as unknown as number,
+      year: undefined,
       fullName: "",
       email: "",
       liability: true,
@@ -186,7 +186,7 @@ export function InsuranceForm() {
                   render={({ field }) => (
                     <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
                       <div className="space-y-0.5">
-                        <FormLabel className="text-base">Liability Coverage</FormLabel>
+                        <FormLabel id="liability-label" className="text-base">Liability Coverage</FormLabel>
                         <FormDescription>Covers damages to others if you're at fault.</FormDescription>
                       </div>
                       <FormControl>
@@ -201,7 +201,7 @@ export function InsuranceForm() {
                   render={({ field }) => (
                     <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
                       <div className="space-y-0.5">
-                        <FormLabel className="text-base">Collision Coverage</FormLabel>
+                        <FormLabel id="collision-label" className="text-base">Collision Coverage</FormLabel>
                         <FormDescription>Covers damage to your vehicle from an accident.</FormDescription>
                       </div>
                       <FormControl>
@@ -216,7 +216,7 @@ export function InsuranceForm() {
                   render={({ field }) => (
                     <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
                       <div className="space-y-0.5">
-                        <FormLabel className="text-base">Comprehensive Coverage</FormLabel>
+                        <FormLabel id="comprehensive-label" className="text-base">Comprehensive Coverage</FormLabel>
                         <FormDescription>Covers non-collision damage, like theft or weather.</FormDescription>
                       </div>
                       <FormControl>
