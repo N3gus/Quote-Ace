@@ -40,7 +40,7 @@ export function InsuranceForm() {
     defaultValues: {
       make: "",
       model: "",
-      year: "" as any,
+      year: "" as unknown as number,
       fullName: "",
       email: "",
       liability: true,
@@ -78,11 +78,11 @@ export function InsuranceForm() {
     await new Promise(resolve => setTimeout(resolve, 1500));
     
     // Simple mock premium calculation
-    let premium = 500; // Base premium
-    if (data.liability) premium += 200;
-    if (data.collision) premium += 300;
-    if (data.comprehensive) premium += 150;
-    if (data.year && data.year < 2000) premium += 100;
+    let premium = 5000; // Base premium in ZMW
+    if (data.liability) premium += 2000;
+    if (data.collision) premium += 3000;
+    if (data.comprehensive) premium += 1500;
+    if (data.year && data.year < 2000) premium += 1000;
     
     const quoteData = { ...data, premium };
 
