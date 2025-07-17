@@ -103,7 +103,7 @@ export function InsuranceForm() {
     if (data.liability) premium += 2000;
     if (data.collision) premium += 3000;
     if (data.comprehensive) premium += 1500;
-    if (data.year && new Date().getFullYear() - data.year > 10) premium += 1000;
+    if (data.year && new Date().getFullYear() - Number(data.year) > 10) premium += 1000;
     
     const quoteData = { ...data, premium };
 
@@ -112,13 +112,15 @@ export function InsuranceForm() {
     toast({
         title: "Quote Generated!",
         description: "We've calculated your personalized quote.",
+        variant: 'default',
+        className: 'bg-green-500 text-white',
     });
 
     const query = new URLSearchParams(quoteData as any).toString();
     router.push(`/quote?${query}`);
   };
   
-  const progressValue = ((currentStep + 1) / steps.length) * 100;
+  const progressValue = ((currentStep) / (steps.length -1)) * 100;
 
   return (
     <div className="space-y-8">
@@ -160,7 +162,7 @@ export function InsuranceForm() {
                   <FormItem>
                     <FormLabel>Year</FormLabel>
                     <FormControl>
-                      <Input type="number" placeholder="e.g., 2022" {...field} onChange={e => field.onChange(e.target.value === '' ? '' : Number(e.target.value))} aria-label="Vehicle Year" />
+                      <Input type="number" placeholder="e.g., 2022" {...field} aria-label="Vehicle Year" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
