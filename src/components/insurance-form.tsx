@@ -50,7 +50,7 @@ export function InsuranceForm() {
     defaultValues: {
       make: "",
       model: "",
-      year: undefined,
+      year: "" as unknown as number, // Initialize with empty string to avoid uncontrolled input error
       fullName: "",
       email: "",
       liability: true,
@@ -112,16 +112,18 @@ export function InsuranceForm() {
     toast({
         title: "Quote Generated!",
         description: "We've calculated your personalized quote.",
-        className: "bg-accent text-accent-foreground border-green-500",
+        className: "bg-green-100 text-green-800 border-green-300 dark:bg-green-900 dark:text-green-100 dark:border-green-700",
     });
 
     const query = new URLSearchParams(quoteData as any).toString();
     router.push(`/quote?${query}`);
   };
+  
+  const progressValue = ((currentStep + 1) / steps.length) * 100;
 
   return (
     <div className="space-y-8">
-      <Progress value={((currentStep) / (steps.length -1)) * 100} className="w-full transition-all duration-500" />
+      <Progress value={progressValue} className="w-full transition-all duration-500" />
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           {currentStep === 0 && (
