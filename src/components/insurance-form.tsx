@@ -115,13 +115,13 @@ export function InsuranceForm() {
     router.push(`/quote?${query}`);
   };
   
-  const progressValue = ((currentStep) / (steps.length - 1)) * 100;
+  const progressValue = ((currentStep + 1) / steps.length) * 100;
 
   return (
     <div className="space-y-8">
       <Progress value={progressValue} className="w-full transition-all duration-500" />
       <Form {...form}>
-        <form className="space-y-6">
+        <form>
           {currentStep === 0 && (
             <div className="space-y-4 animate-in fade-in-50 duration-500">
               <FormField
@@ -175,7 +175,7 @@ export function InsuranceForm() {
                   <FormItem>
                     <FormLabel>Full Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="e.g., Jane Doe" {...field} aria-label="Full Name" />
+                      <Input placeholder="e.g., Musonda Sakala" {...field} aria-label="Full Name" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -188,7 +188,7 @@ export function InsuranceForm() {
                   <FormItem>
                     <FormLabel>Email Address</FormLabel>
                     <FormControl>
-                      <Input type="email" placeholder="e.g., jane.doe@example.com" {...field} aria-label="Email Address" />
+                      <Input type="email" placeholder="e.g., musakala@example.com" {...field} aria-label="Email Address" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
