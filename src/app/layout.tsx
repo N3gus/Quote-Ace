@@ -43,7 +43,7 @@ export default function RootLayout({
           </header>
           <main className="flex-grow">{children}</main>
           <footer className="text-center p-4 text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Quote Ace. All Rights Reserved.
+            © 2025 n k e t a n i.
           </footer>
         </div>
         <Toaster />
