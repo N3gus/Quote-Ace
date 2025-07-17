@@ -20,7 +20,7 @@ function QuoteDisplay() {
   const quote = {
     make: searchParams.get('make') || 'N/A',
     model: searchParams.get('model') || 'N/A',
-    year: search-params.get('year') || 'N/A',
+    year: searchParams.get('year') || 'N/A',
     fullName: searchParams.get('fullName') || 'N/A',
     email: searchParams.get('email') || 'N/A',
     liability: searchParams.get('liability') === 'true',
