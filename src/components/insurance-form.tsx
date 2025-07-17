@@ -40,7 +40,7 @@ export function InsuranceForm() {
     defaultValues: {
       make: "",
       model: "",
-      year: undefined,
+      year: "" as any,
       fullName: "",
       email: "",
       liability: true,
