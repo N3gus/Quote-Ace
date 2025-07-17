@@ -34,4 +34,4 @@ The application will be available at `http://localhost:9002`.
 - [Tailwind CSS](https://tailwindcss.com/)
 - [ShadCN UI](https://ui.shadcn.com/) (Component Library)
 - [React Hook Form](https://react-hook-form.com/) & [Zod](https://zod.dev/) (Form Management & Validation)
-- [Genkit](https://firebase.google.com/docs/genkit) (for AI functionality)
+- [Genkit](https://firebase.google.com/docs/genkit)
