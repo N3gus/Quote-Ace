@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -40,7 +41,7 @@ export function InsuranceForm() {
     defaultValues: {
       make: "",
       model: "",
-      year: undefined,
+      year: "" as any, // Initialize with empty string to avoid uncontrolled error
       fullName: "",
       email: "",
       liability: true,
@@ -138,7 +139,7 @@ export function InsuranceForm() {
                   <FormItem>
                     <FormLabel>Year</FormLabel>
                     <FormControl>
-                      <Input type="number" placeholder="e.g., 2022" {...field} aria-label="Vehicle Year" />
+                      <Input type="number" placeholder="e.g., 2022" {...field} value={field.value ?? ''} aria-label="Vehicle Year" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
