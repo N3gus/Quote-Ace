@@ -89,7 +89,7 @@ export function InsuranceForm() {
    * It calculates a mock premium, shows a success toast, and navigates to the quote page.
    * @param {QuoteFormData} data - The validated form data.
    */
-  const onSubmit = async (data: QuoteFormData) => {
+  const processQuote = async (data: QuoteFormData) => {
     setIsSubmitting(true);
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1500));
@@ -108,19 +108,20 @@ export function InsuranceForm() {
     toast({
         title: "Quote Generated!",
         description: "We've calculated your personalized quote.",
+        variant: 'default',
     });
 
     const query = new URLSearchParams(quoteData as any).toString();
     router.push(`/quote?${query}`);
   };
   
-  const progressValue = ((currentStep + 1) / (steps.length)) * 100;
+  const progressValue = ((currentStep) / (steps.length - 1)) * 100;
 
   return (
     <div className="space-y-8">
       <Progress value={progressValue} className="w-full transition-all duration-500" />
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <form className="space-y-6">
           {currentStep === 0 && (
             <div className="space-y-4 animate-in fade-in-50 duration-500">
               <FormField
@@ -256,7 +257,7 @@ export function InsuranceForm() {
                 Next Step
               </Button>
             ) : (
-              <Button type="submit" disabled={isSubmitting}>
+              <Button type="button" onClick={form.handleSubmit(processQuote)} disabled={isSubmitting}>
                 {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                 Get My Quote
               </Button>
