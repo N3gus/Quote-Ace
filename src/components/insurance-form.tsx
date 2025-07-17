@@ -41,7 +41,7 @@ export function InsuranceForm() {
     defaultValues: {
       make: "",
       model: "",
-      year: "" as any, // Initialize with empty string to avoid uncontrolled error
+      year: undefined,
       fullName: "",
       email: "",
       liability: true,
