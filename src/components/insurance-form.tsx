@@ -50,7 +50,7 @@ export function InsuranceForm() {
     defaultValues: {
       make: "",
       model: "",
-      year: '',
+      year: "",
       fullName: "",
       email: "",
       liability: true,
@@ -90,10 +90,6 @@ export function InsuranceForm() {
    * @param {QuoteFormData} data - The validated form data.
    */
   const onSubmit = async (data: QuoteFormData) => {
-    // Final validation for coverage
-    const output = await form.trigger(["liability", "collision", "comprehensive"]);
-    if (!output) return;
-
     setIsSubmitting(true);
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1500));
@@ -112,15 +108,13 @@ export function InsuranceForm() {
     toast({
         title: "Quote Generated!",
         description: "We've calculated your personalized quote.",
-        variant: 'default',
-        className: 'bg-green-500 text-white',
     });
 
     const query = new URLSearchParams(quoteData as any).toString();
     router.push(`/quote?${query}`);
   };
   
-  const progressValue = ((currentStep) / (steps.length -1)) * 100;
+  const progressValue = ((currentStep + 1) / (steps.length)) * 100;
 
   return (
     <div className="space-y-8">
